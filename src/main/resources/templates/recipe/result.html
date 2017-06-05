@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta property="fb:app_id" content="1081991388480699"/>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<!-- 	recipeId holiday cheffbook instruction previous latitude longitude published version ranking-->
+<div th:replace="fragments/navbar"/>
+<div class='container'>
+    <legend th:text="${formTitle}"></legend>
+    <div class='row' th:if="*{newCampaign}">
+        <div class='col-md-4'>
+            <label>Random Campaign</label>
+        </div>
+        <div class='col-md-8'>
+            <div th:utext="${newCampaign}"/>
+        </div>
+    </div>
+    <div class='row' th:if="*{upcomming}">
+        <div class='col-md-4'>
+            <label>Upcomming Holidays</label>
+        </div>
+        <div class='col-md-8'>
+            <div th:utext="${upcomming}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>id</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.recipeId}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>title</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.title}"/>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>cheffbook</label>
+        </div>
+        <div class='col-md-8'>
+            <div th:utext="${recipe.cheffBook}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>photo</label>
+        </div>
+        <div class='col-md-8'>
+            <img th:src="@{/cheff/recipe/{id}/photo(id=${recipe.recipeId})}"
+                 height="200" width="200"/>
+        </div>
+    </div>
+    <div class='row' th:if="*{newSupplierMarket}">
+        <div class='col-md-4'>
+            <label>A small offer:</label>
+        </div>
+        <div class='col-md-8'>
+            <div th:utext="${newSupplierMarket}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>instructions</label>
+        </div>
+        <div class='col-md-8'>
+            <a href="view"
+               th:href="@{/cheff/instruction/{id}/list(id=${recipe.recipeId})}"
+               th:text="view"></a>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>previous</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.previous}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>latitude</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.latitude}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>longitude</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.longitude}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>published</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.published}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>version</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.version}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>ranking</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${recipe.ranking}"/>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/facebook" th:if="${commentsAllowed}"/>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

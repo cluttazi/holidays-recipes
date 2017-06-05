@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class='container'>
+    <h2>List of CheffBooks</h2>
+    <table class="table">
+        <!-- 	date title description -->
+        <tr>
+            <td>id</td>
+            <td>user</td>
+            <td>title</td>
+            <td>cuisine</td>
+            <td>enabled</td>
+            <td>edit</td>
+            <td>view recipes</td>
+        </tr>
+        <tr th:each="cheffBook : ${listCheffBook}">
+            <td th:text="${cheffBook.cheffBookId}"/>
+            <td th:text="${cheffBook.user.username}"/>
+            <td th:text="${cheffBook.title}"/>
+            <td th:text="${cheffBook.cuisine}"/>
+            <td th:text="${cheffBook.enabled}"/>
+            <td><a href="edit"
+                   th:href="@{/cheff/{id}/update(id=${cheffBook.cheffBookId})}"
+                   th:text="edit"></a></td>
+            <td><a href="view"
+                   th:href="@{/cheff/recipe/{id}/list(id=${cheffBook.cheffBookId})}"
+                   th:text="view"></a></td>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<!-- 	position ingredient amount description -->
+<div class='container'>
+    <h2>List of Suppliers</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>ingredient</td>
+        </tr>
+        <tr th:each="supplier: ${listSupplier}">
+            <td th:text="${supplier.supplierMarketId}"/>
+            <td th:text="${supplier.name}"/>
+            <td th:text="${supplier.ingredient}"/>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

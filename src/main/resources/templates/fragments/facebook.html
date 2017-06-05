@@ -1,0 +1,55 @@
+<div class='container'>
+    <div class='row'>
+        <!-- 		<div id="fb-root"></div> -->
+        <!-- 		<button onclick="myFacebookLogin()">Login with Facebook</button> -->
+        <div style='width:100%' class='col-md-10'>
+            <div class="fb-comments" th:data="@{/}" data-numposts="5" data-width="100%"></div>
+        </div>
+        <div class='col-md-2'>
+            <div class="fb-share-button" th:data="@{/}"
+                 data-layout="button_count"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : '1081991388480699',
+			xfbml : true,
+			version : 'v2.5'
+		});
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	FB.init();
+	// Only works after `FB.init` is called
+	function myFacebookLogin() {
+		FB.login(function() {
+		}, {
+			scope : 'publish_actions'
+		});
+	}
+
+	FB.ui({
+		method : 'share_open_graph',
+		action_type : 'og.likes',
+		action_properties : JSON.stringify({
+			object : 'https://developers.facebook.com/docs/',
+		})
+	}, function(response) {
+		// Debug response (optional)
+		console.log(response);
+	});
+
+
+</script>

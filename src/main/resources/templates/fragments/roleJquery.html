@@ -1,0 +1,25 @@
+<script>
+	$(".cheff").hide();
+	$(".admin").hide();
+	$(".manager").hide();
+	$(".advertiser").hide();
+	$(".supplier").hide();
+	str = $("#rolesJquery").text();
+	if (str.indexOf("ADMIN") >= 0) {
+		$(".admin").show();
+	}
+	if (str.indexOf("ADVERTISER") >= 0) {
+		$(".advertiser").show();
+	}
+	if (str.indexOf("CHEFF") >= 0) {
+		$(".cheff").show();
+	}
+	if (str.indexOf("MANAGER") >= 0) {
+		$(".manager").show();
+	}
+	if (str.indexOf("SUPPLIER") >= 0) {
+		$(".supplier").show();
+	}
+
+
+</script>

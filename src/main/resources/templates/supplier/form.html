@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<!-- 	position ingredient amount description -->
+
+<div class="container">
+    <form action="#" class="form-horizontal" th:action="@{/supplier/}"
+          th:object="${supplier}" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Name</label>
+                <div class="col-md-4">
+                    <input id="name" name="name" type="text" placeholder="name"
+                           class="form-control input-md" required=""/> <span
+                        class="help-block">help</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Select Multiple -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="ingredient">Ingredient</label>
+                <div class="col-md-4">
+                    <select id="ingredient" name="ingredient" class="form-control"
+                            th:field="*{ingredient}">
+                        <option th:each="ingredient : ${listIngredients}"
+                                th:value="${ingredient.ingredientId}" th:text="${ingredient}" required="">Ingredient
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('ingredient')}"
+                              th:errors="*{ingredient}">ingredient error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary"
+                            th:text="Create" type="submit"></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

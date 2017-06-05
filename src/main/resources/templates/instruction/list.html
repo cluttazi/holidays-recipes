@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<!-- 	position ingredient amount description -->
+<div class='container'>
+    <h2>List of Instructions</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>recipe</td>
+            <td>position</td>
+            <td>ingredient</td>
+            <td>amount</td>
+            <td>description</td>
+            <td>action</td>
+        </tr>
+        <tr th:each="instruction : ${listInstruction}">
+            <td th:text="${instruction.instructionId}"/>
+            <td th:text="${instruction.recipe}"/>
+            <td th:text="${instruction.position}"/>
+            <td th:text="${instruction.ingredient}"/>
+            <td th:text="${instruction.amount}"/>
+            <td th:text="${instruction.description}"/>
+            <td><a href="edit"
+                   th:href="@{/cheff/instruction/{id}/update(id=${instruction.instructionId})}"
+                   th:text="edit"></a></td>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZb2KVyTdG8sMEgI8hZPSH5UGnLECTemI&amp;sensor=false">
+
+</script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+
+	var locations = JSON.parse([[${listRecipeJSON}]]);
+
+	function initialize() {
+
+		var myOptions = {
+			center : new google.maps.LatLng(42.3601, -71.0589),
+			zoom : 8,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+
+		};
+		var map = new google.maps.Map(document.getElementById("default"),
+				myOptions);
+
+		setMarkers(map, locations)
+
+	}
+
+	function setMarkers(map, locations) {
+
+		var marker, i
+
+		for (i = 0; i < locations.length; i++) {
+
+			var title = locations[i].title
+			var lat = locations[i].latitude
+			var long = locations[i].longitude
+			var id = locations[i].id
+			var holiday=locations[i].holiday
+
+			latlngset = new google.maps.LatLng(lat, long);
+
+			var marker = new google.maps.Marker({
+				map : map,
+				title : title,
+				position : latlngset
+			});
+			map.setCenter(marker.getPosition())
+			var content = "<div><h3><a href='"+ document.URL+"cheff/recipe/"+id+"/view'>"+title+"</a></h3><h4>"+holiday+"</h4><img height='100' width='100' src='"+ document.URL+ "cheff/recipe/" + id +"/photo' /></div>"
+			var infowindow = new google.maps.InfoWindow()
+
+			google.maps.event.addListener(marker, 'click', (function(marker,
+					content, infowindow) {
+				return function() {
+					infowindow.setContent(content);
+					infowindow.open(map, marker);
+				};
+			})(marker, content, infowindow));
+
+		}
+	}
+	/*]]>*/
+
+
+</script>

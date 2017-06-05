@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class='container'>
+    <legend th:text="${formTitle}"></legend>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>id</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${user.userId}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>name</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${user.name}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>username</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${user.username}"/>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

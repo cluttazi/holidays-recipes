@@ -1,0 +1,61 @@
+<div sec:authorize="isAuthenticated()" class="col-md-2" id="leftCol">
+    <nav class="navbar navbar-default sidebar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse"
+                 id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home<span
+                            style="font-size: 16px;"
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                    <li class="cheff dropdown"><a href="#" class="dropdown-toggle"
+                                                  data-toggle="dropdown">My Recipes <span class="caret"></span><span
+                            style="font-size: 16px;"
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-grain"></span></a>
+                        <ul class="dropdown-menu forAnimate" role="menu">
+                            <li><a href="create" th:href="@{/cheff/recipe}">Create</a></li>
+                            <li><a href="viewAll" th:href="@{/cheff/recipe/list}">View
+                                All</a></li>
+                            <li><a href="instruction" th:href="@{/cheff/instruction}">Add
+                                Instruction</a></li>
+                        </ul>
+                    </li>
+                    <li class="cheff dropdown"><a href="#" class="dropdown-toggle"
+                                                  data-toggle="dropdown">My Cheff Books <span class="caret"></span><span
+                            style="font-size: 16px;"
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span></a>
+                        <ul class="dropdown-menu forAnimate" role="menu">
+                            <li><a href="create" th:href="@{/cheff}">Create</a></li>
+                            <li><a href="viewAll" th:href="@{/cheff/list}">View All</a></li>
+                        </ul>
+                    </li>
+                    <li class="manager dropdown"><a href="#"
+                                                    class="dropdown-toggle" data-toggle="dropdown">Management <span
+                            class="caret"></span><span style="font-size: 16px;"
+                                                       class="pull-right hidden-xs showopacity glyphicon glyphicon-wrench"></span></a>
+                        <ul class="dropdown-menu forAnimate" role="menu">
+                            <li><a href="holiday" th:href="@{/manager/holiday/}">Add Holiday</a></li>
+                            <li><a href="ingredient" th:href="@{/manager/ingredient}">Add Ingredient</a></li>
+                        </ul>
+                    </li>
+                    <li class="advertiser"><a href="campaign"
+                                              th:href="@{/campaign}">Campaign<span style="font-size: 16px;"
+                                                                                   class="pull-right hidden-xs showopacity glyphicon glyphicon-euro"></span></a>
+                    </li>
+                    <li class="supplier"><a href="supplier" th:href="@{/supplier}">Supplier<span
+                            style="font-size: 16px;"
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>

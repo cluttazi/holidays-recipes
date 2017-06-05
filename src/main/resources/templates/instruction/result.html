@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<!-- 	position ingredient amount description -->
+<div class='container'>
+    <legend th:text="${formTitle}"></legend>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>id</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.instructionId}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>recipe</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.recipe}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>position</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.position}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>ingredient</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.ingredient}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>amount</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.amount}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>description</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${instruction.description}"/>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>
+

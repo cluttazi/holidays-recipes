@@ -1,0 +1,47 @@
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="" th-href="@{/}">Holidays Recipes</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!-- 				class="active" -->
+                <li><a href="home" th:href="@{/}">Home</a></li>
+                <li class="admin"><a href="user" th:href="@{/user/list}">VIEW Users</a></li>
+                <li class="admin"><a href="user" th:href="@{/user/}">ADD Users</a></li>
+                <li class="cheff"><a href="cheffbook" th:href="@{/cheff/list}">Cheff
+                    Book</a></li>
+                <li class="manager"><a href="listholidays"
+                                       th:href="@{/manager/holiday/list}">Holidays</a></li>
+                <li class="manager"><a href="listingredient"
+                                       th:href="@{/manager/ingredient/list}">Ingredients</a></li>
+                <li class="supplier"><a href="listsuppliers"
+                                        th:href="@{/supplier/list}">Supplier</a></li>
+                <li class="advertiser"><a href="managesupplier"
+                                          th:href="@{/campaign/list}">Campaign</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li sec:authorize="isAuthenticated()"><a href="change"
+                                                         th:href="@{/user/changePassword}" sec:authentication="name">Bob
+                </a></li>
+                <li sec:authorize="isAuthenticated()"><span id="rolesJquery"
+                                                            style="display: none"
+                                                            sec:authentication="principal.authorities"></span><a
+                        class="btn btn-default" href="/logout" th:href="@{/logout}">Logout</a>
+                </li>
+                <li sec:authorize="isAnonymous()"><a class="btn btn-default"
+                                                     href="/login" th:href="@{/login}">Sign in</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>

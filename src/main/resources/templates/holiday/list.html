@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+
+<div class='container'>
+
+    <h2>List of Holidays</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>date</td>
+            <td>description</td>
+            <td>action</td>
+        </tr>
+        <tr th:each="holiday : ${listHoliday}">
+            <td th:text="${holiday.holidayId}"/>
+            <td th:text="${holiday.title}"/>
+            <td th:text="${holiday.date}"/>
+            <td th:text="${holiday.description}"/>
+            <td><a href="edit"
+                   th:href="@{/manager/holiday/{id}/update(id=${holiday.holidayId})}"
+                   th:text="edit"></a></td>
+        </tr>
+    </table>
+    <div th:replace="fragments/footer"/>
+</div>
+</body>
+</html>

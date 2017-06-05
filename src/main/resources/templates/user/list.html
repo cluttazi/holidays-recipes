@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+
+<div class='container'>
+    <h2>List of Users</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>username</td>
+            <td>enabled</td>
+            <td>change status</td>
+            <td>actions</td>
+            <td>roles</td>
+            <td>cheff</td>
+            <td>manager</td>
+            <td>supplier</td>
+            <td>advertiser</td>
+            <td>remove all</td>
+        </tr>
+        <tr th:each="user : ${listUser}" th:if="*{user.userId}">
+            <td th:text="${user.userId}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.username}"/>
+            <td th:text="${user.enabled}"/>
+            <td><a href="changestatus"
+                   th:href="@{/user/{id}/{status}(id=${user.userId},status=!${user.enabled})}"
+                   th:text="${user.enabled} ? disable : enable"></a></td>
+            <td><a href="edit"
+                   th:href="@{/user/{id}/update(id=${user.userId})}" th:text="edit"></a></td>
+            <td>
+                <div th:each="authority : ${user.authority}">
+                    <span th:text=" ${authority} "></span>
+                </div>
+            </td>
+            <td><a href="add"
+                   th:href="@{/user/{id}/cheff/add(id=${user.userId})}"
+                   class="btn btn-primary">add</a></td>
+            <td><a href="add"
+                   th:href="@{/user/{id}/manager/add(id=${user.userId})}"
+                   class="btn btn-primary">add</a></td>
+            <td><a href="add"
+                   th:href="@{/user/{id}/supplier/add(id=${user.userId})}"
+                   class="btn btn-primary">add</a></td>
+            <td><a href="add"
+                   th:href="@{/user/{id}/advertiser/add(id=${user.userId})}"
+                   th:text="add" class="btn btn-primary">add</a></td>
+            <td><a href="remove"
+                   th:href="@{/user/{id}/removeRole(id=${user.userId})}"
+                   class="btn btn-primary">remove all</a></td>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

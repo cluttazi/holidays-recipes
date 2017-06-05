@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+
+<div class='container'>
+    <h2>List of Recipes</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>cheffbook</td>
+            <td>instructions</td>
+            <td>previous</td>
+            <td>latitude</td>
+            <td>longitude</td>
+            <td>published</td>
+            <td>version</td>
+            <td>ranking</td>
+            <td>action</td>
+        </tr>
+        <tr th:each="recipe : ${listRecipe}">
+            <td th:text="${recipe.recipeId}"/>
+            <td th:text="${recipe.cheffBook}"/>
+            <td><a href="view"
+                   th:href="@{/cheff/instruction/{id}/list(id=${recipe.recipeId})}">view
+                instructions</a></td>
+            <td th:text="${recipe.previous}"/>
+            <td th:text="${recipe.latitude}"/>
+            <td th:text="${recipe.longitude}"/>
+            <td th:text="${recipe.published}"/>
+            <td th:text="${recipe.version}"/>
+            <td th:text="${recipe.ranking}"/>
+            <td><a href="edit"
+                   th:href="@{/cheff/recipe/{id}/update(id=${recipe.recipeId})}"
+                   th:text="edit"></a></td>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

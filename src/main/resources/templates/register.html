@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class="container">
+    <form class="form-horizontal" action="#" th:action="@{/register}"
+          th:object="${user}" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Name</label>
+                <div class="col-md-4">
+                    <input id="name" name="name" type="text" placeholder="Your Name"
+                           class="form-control input-md" required="" th:value="${user.name}"
+                           th:readonly="${user.name}"/> <span class="help-block">Your
+							name</span>
+
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Username</label>
+                <div class="col-md-4">
+                    <input id="username" name="username" type="text"
+                           placeholder="Username (E-Mail)" class="form-control input-md"
+                           required=""/> <span class="help-block">Your email
+							address</span>
+
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('username')}"
+                              th:errors="*{username}">username error message</span>
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="passwordinput">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" type="password"
+                           placeholder="Password" class="form-control input-md" required=""/><span
+                        class="help-block">Please enter a &gt;8 character password</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('password')}"
+                              th:errors="*{password}">password error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary">Sign
+                        Up
+                    </button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

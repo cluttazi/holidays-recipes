@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<!-- 	position ingredient amount description -->
+
+<div class="container">
+    <form action="#" class="form-horizontal"
+          th:action="(!${instruction.instructionId}) ? @{/cheff/instruction/} : @{/cheff/instruction/{id}/update(id=(${instruction.instructionId}))}"
+          th:object="${instruction}" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="position">Position</label>
+                <div class="col-md-4">
+                    <input id="position" name="position" type="text"
+                           placeholder="position" class="form-control input-md" required=""/>
+                    <span class="help-block">help</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('position')}"
+                              th:errors="*{position}">position error message</span>
+                </div>
+            </div>
+
+            <!-- Select Multiple -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="ingredient">Ingredient</label>
+                <div class="col-md-4">
+                    <select id="ingredient" name="ingredient" class="form-control"
+                            th:field="*{ingredient}">
+                        <option th:each="ingredient : ${listIngredients}"
+                                th:value="${ingredient.ingredientId}" th:text="${ingredient}">Ingredient
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('ingredient')}"
+                              th:errors="*{ingredient}">ingredient error message</span>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="holiday">Recipe</label>
+                <div class="col-md-4">
+                    <select id="recipe" name="recipe" class="form-control"
+                            th:field="*{recipe}" required="">
+                        <option th:each="recipe : ${listRecipe}"
+                                th:value="${recipe.recipeId}" th:text="${recipe}">Recipe
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('recipe')}"
+                              th:errors="*{recipe}">recipe error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="amount">Amount</label>
+                <div class="col-md-4">
+                    <input id="amount" name="amount" type="text" placeholder="amount"
+                           class="form-control input-md" required=""/> <span
+                        class="help-block">help</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="description">Description</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="description"
+                              name="description">Description of the step</textarea>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('description')}"
+                              th:errors="*{description}">Description error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary"
+                            th:text="(!${instruction.instructionId}) ? 'Create' : 'Update'"
+                            type="submit"></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

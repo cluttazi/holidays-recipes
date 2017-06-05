@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "googlesapis.api_key",
+      "type": "java.lang.String",
+      "description": "Googles API Key LOCALHOST"
+    }
+  ]
+}

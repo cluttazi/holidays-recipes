@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class="container">
+    <!-- 	title photo holiday cheffbook   latitude longitude-->
+    <form class="form-horizontal" action="#"
+          th:action="(!${recipe.recipeId}) ? @{/cheff/recipe/} : @{/cheff/recipe/{id}/update(id=(${recipe.recipeId}))}"
+          th:object="${recipe}" method="post" enctype="multipart/form-data">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="title">Title</label>
+                <div class="col-md-4">
+                    <input id="title" name="title" type="text" placeholder="title"
+                           class="form-control input-md" required="" th:value="${recipe.title}"/> <span
+                        class="help-block">Title of your recipe</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title
+							error message</span>
+                </div>
+            </div>
+
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="photo">Photo</label>
+                <div class="col-md-4">
+                    <input id="photo" name="photo" class="input-file" type="file"></input>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">photo
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="holiday">Holiday</label>
+                <div class="col-md-4">
+                    <select id="holiday" name="holiday" class="form-control"
+                            th:field="*{holiday}">
+                        <option th:each="holiday : ${listHoliday}"
+                                th:value="${holiday.holidayId}" th:text="${holiday}" required="">Holiday
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('holiday')}" th:errors="*{holiday}">holiday
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Select Multiple -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cheffBook">Cheff
+                    Book</label>
+                <div class="col-md-4">
+                    <select id="cheffBook" name="cheffBook" class="form-control"
+                            th:field="*{cheffBook}" required="">
+                        <option th:each="cheffbookIterator : ${listCheffBook}"
+                                th:value="${cheffbookIterator.cheffBookId}" th:text="${cheffbookIterator}">CheffBook
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('cheffBook')}" th:errors="*{cheffBook}">cheff book
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="latitude">Latitude</label>
+                <div class="col-md-4">
+                    <input id="latitude" name="latitude" type="text"
+                           placeholder="latitude" class="form-control input-md" required=""
+                           th:value="${recipe.latitude}"/>
+                    <span class="help-block">Latitude of the recipe origin</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}">latitude
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="longitude">Longitude</label>
+                <div class="col-md-4">
+                    <input id="longitude" name="longitude" type="text"
+                           placeholder="longitude" class="form-control input-md" required=""
+                           th:value="${recipe.longitude}"/>
+                    <span class="help-block">Longitude of recipe origin</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}">longitude
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary"
+                            th:text="(!${recipe.recipeId}) ? 'Create' : 'Update'"
+                            type="submit"></button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

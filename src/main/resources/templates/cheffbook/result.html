@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<!-- 	recipeId holiday cheffbook instruction previous latitude longitude published version ranking-->
+<div th:replace="fragments/navbar"/>
+<div class='container'>
+    <legend th:text="${formTitle}"></legend>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>id</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${cheffBook.cheffBookId}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>title</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${cheffBook.cheffBookId}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>cuisine</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${cheffBook.cuisine}"/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <label>enabled</label>
+        </div>
+        <div class='col-md-8'>
+            <p th:text="${cheffBook.enabled}"/>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+
+<div class='container'>
+    <h2>List of Campaigns</h2>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>description</td>
+            <td>minlatitude</td>
+            <td>maxlatitude</td>
+            <td>minlongitude</td>
+            <td>maxlongitude</td>
+        </tr>
+        <tr th:each="campaign : ${listCampaign}">
+            <td th:text="${campaign.campaignId}"/>
+            <td th:text="${campaign.title}"/>
+            <td th:text="${campaign.text}"/>
+            <td th:text="${campaign.minLatitude}"/>
+            <td th:text="${campaign.maxLatitude}"/>
+            <td th:text="${campaign.minLongitude}"/>
+            <td th:text="${campaign.maxLongitude}"/>
+        </tr>
+    </table>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

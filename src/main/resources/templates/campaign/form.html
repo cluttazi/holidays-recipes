@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+    <style>
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class="container">
+    <form class="form-horizontal" action="#" th:action="@{/campaign}"
+          th:object="${campaign}" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="title">Title</label>
+                <div class="col-md-4">
+                    <input id="title" name="title" type="text" placeholder="title"
+                           class="form-control input-md" required=""/> <span
+                        class="help-block">Enter a title</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="text">Description</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="text" name="text">Describe your promotion</textarea>
+                    <!-- Create the toolbar container -->
+                    <div id="toolbar">
+                        <button class="ql-bold">Bold</button>
+                        <button class="ql-italic">Italic</button>
+                    </div>
+
+                    <!-- Create the editor container -->
+                    <div id="editor" class="form-control">
+                        <div>Hello World!</div>
+                        <div>Text Editor</div>
+                        <div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Text
+							error message</span>
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="minLongitude">Minimum
+                    Longitude</label>
+                <div class="col-md-4">
+                    <input id="minLongitude" name="minLongitude" type="text"
+                           placeholder="minLongitude" class="form-control input-md"
+                           required=""/> <span class="help-block">Minimum Longitude</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('minLongitude')}"
+                              th:errors="*{minLongitude}">Min Longitude error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="maxLongitude">Maximum
+                    Longitude</label>
+                <div class="col-md-4">
+                    <input id="maxLongitude" name="maxLongitude" type="text"
+                           placeholder="maxLongitude" class="form-control input-md"
+                           required=""/> <span class="help-block">Maximum Longitude</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('maxLongitude')}"
+                              th:errors="*{maxLongitude}">Email error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="minLatitude">Minimum
+                    Latitude</label>
+                <div class="col-md-4">
+                    <input id="minLatitude" name="minLatitude" type="text"
+                           placeholder="minLatitude" class="form-control input-md"
+                           required=""/> <span class="help-block">Minimum Latitude</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('minLatitude')}"
+                              th:errors="*{minLatitude}">Email error message</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="maxLatitude">Maximum
+                    Latitude</label>
+                <div class="col-md-4">
+                    <input id="maxLatitude" name="maxLatitude" type="text"
+                           placeholder="maxLatitude" class="form-control input-md"
+                           required=""/> <span class="help-block">Maximum Latitude</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('maxLatitude')}"
+                              th:errors="*{maxLatitude}">Email error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary"
+                            th:text="Create" type="submit">Create
+                    </button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+<div th:replace="fragments/footer"/>
+<!-- 	<script src="js/quill.min.js" th:src="@{/js/quill.min.js}"></script> -->
+
+
+<!-- Include the Quill library -->
+<script src="//cdn.quilljs.com/0.20.1/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+		var quill = new Quill('#editor');
+		quill.addModule('toolbar', {
+			container : '#toolbar'
+		});
+
+		var html = quill.getText();
+		$('#text').hide();
+		$('#editor').bind("DOMSubtreeModified", function() {
+			html = quill.getText();
+			$('#text').val(html);
+		});
+
+
+</script>
+</body>
+</html>

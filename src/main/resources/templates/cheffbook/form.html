@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+<div class="container">
+    <form class="form-horizontal" action="#"
+          th:action="(!${cheffBook.cheffBookId}) ? @{/cheff} : @{/cheff/{id}/update(id=(${cheffBook.cheffBookId}))}"
+          th:object="${cheffBook}" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend th:text="${formTitle}"></legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="title">Title</label>
+                <div class="col-md-4">
+                    <input id="title" name="title" type="text" placeholder="title"
+                           class="form-control input-md" required=""
+                           th:value="${cheffBook.title}"/> <span class="help-block">help</span>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Email
+							error message</span>
+                </div>
+            </div>
+
+            <!-- Select Multiple -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cuisine">Cuisine</label>
+                <div class="col-md-4">
+                    <select id="cuisine" name="cuisine" class="form-control"
+                            multiple="multiple" th:field="*{cuisine}" required="">
+                        <option
+                                th:each="cuisine : ${T(edu.neu.luttazi.model.Cuisine).values()}"
+                                th:value="${cuisine}" th:text="${cuisine}"></option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+						<span th:if="${#fields.hasErrors('cuisine')}"
+                              th:errors="*{cuisine}">cuisine error message</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary"
+                            th:text="(!${cheffBook.cheffBookId}) ? 'Create' : 'Update'"
+                            type="submit">submit
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer"/>
+</body>
+</html>

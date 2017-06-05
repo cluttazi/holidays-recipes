@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/navbar"/>
+
+<div class='container'>
+
+    <h2>List of Ingredients</h2>
+    <table class="table">
+        <!-- 	date title description -->
+        <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>description</td>
+            <td>action</td>
+        </tr>
+        <tr th:each="ingredient : ${listIngredient}">
+            <td th:text="${ingredient.ingredientId}"/>
+            <td th:text="${ingredient.title}"/>
+            <td th:text="${ingredient.description}"/>
+            <td><a href="edit"
+                   th:href="@{/manager/ingredient/{id}/update(id=${ingredient.ingredientId})}"
+                   th:text="edit"></a></td>
+        </tr>
+    </table>
+    <div th:replace="fragments/footer"/>
+</div>
+</body>
+</html>
