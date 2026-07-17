@@ -1,6 +1,19 @@
-.classpath
-.idea
-.mvn
-.project
-.settings
+# Build output
+target/
+*.war
+
+# IDE files
+.idea/
 *.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
