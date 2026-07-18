@@ -150,6 +150,9 @@ public class RecipeWebController {
 
     private String randomCampaign() {
         List<Campaign> list = campaignService.findAll();
+        if (list.isEmpty()) {
+            return "";
+        }
         Random randomGenerator = new Random();
         int index = randomGenerator.nextInt(list.size());
 
@@ -158,6 +161,9 @@ public class RecipeWebController {
 
     private String randomMarket() {
         List<SupplierMarket> list = supplierService.findAll();
+        if (list.isEmpty()) {
+            return "";
+        }
         Random randomGenerator = new Random();
         int index = randomGenerator.nextInt(list.size());
 
