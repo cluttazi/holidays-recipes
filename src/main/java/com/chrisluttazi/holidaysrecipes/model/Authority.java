@@ -1,13 +1,13 @@
 package com.chrisluttazi.holidaysrecipes.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "authorities", uniqueConstraints = @UniqueConstraint(columnNames = {"authority", "username"}))
 public class Authority {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "authority_id", unique = true, nullable = false)
     private Integer authorityId;
     @ManyToOne(fetch = FetchType.LAZY)

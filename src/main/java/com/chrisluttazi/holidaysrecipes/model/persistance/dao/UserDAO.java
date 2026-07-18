@@ -1,13 +1,13 @@
 package com.chrisluttazi.holidaysrecipes.model.persistance.dao;
 
 import com.chrisluttazi.holidaysrecipes.model.User;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public interface UserDAO extends PagingAndSortingRepository<User, Long> {
+public interface UserDAO extends JpaRepository<User, String> {
 
     @SuppressWarnings("unchecked")
     public User save(User user);

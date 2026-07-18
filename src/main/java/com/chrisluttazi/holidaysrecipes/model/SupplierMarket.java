@@ -1,9 +1,9 @@
 package com.chrisluttazi.holidaysrecipes.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class SupplierMarket {
@@ -13,7 +13,7 @@ public class SupplierMarket {
     private Ingredient ingredient;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long supplierMarketId;
 
     @NotNull

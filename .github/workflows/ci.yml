@@ -8,17 +8,17 @@ on:
 
 jobs:
   build:
-    name: Build (JDK 8)
+    name: Build (JDK 21)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 8
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '8'
+          java-version: '21'
           cache: maven
 
       - name: Build with Maven

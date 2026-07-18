@@ -22,7 +22,7 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public Recipe findByRecipeId(Long id) {
-        return recipeDAO.findOne(id);
+        return recipeDAO.findById(id).orElse(null);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class RecipeServiceImplementation implements RecipeService {
         }
 
         for (Instruction i : listInstructions) {
-            instructionDAO.delete(i.getInstructionId());
+            instructionDAO.deleteById(i.getInstructionId());
         }
         oldRecipe.setPublished(false);
         oldRecipe.setInstruction(new ArrayList<Instruction>());

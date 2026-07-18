@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/cluttazi/holidays-recipes/actions/workflows/ci.yml/badge.svg)](https://github.com/cluttazi/holidays-recipes/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Java](https://img.shields.io/badge/Java-8-orange.svg)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-1.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
 A Spring Boot web application where home chefs share holiday recipes from their culture, and find suppliers for hard-to-source cultural ingredients.
 
@@ -22,7 +22,7 @@ Many traditional holiday recipes call for ingredients that are not available loc
 
 | Layer | Technology |
 | --- | --- |
-| Framework | Spring Boot 1.3 (Spring MVC, Spring Data JPA, Spring Security) |
+| Framework | Spring Boot 3.5 (Spring MVC, Spring Data JPA, Spring Security) |
 | Views | Thymeleaf, Bootstrap, jQuery |
 | Persistence | MySQL, Hibernate |
 | Integrations | Google Maps API, Facebook API |
@@ -32,8 +32,8 @@ Many traditional holiday recipes call for ingredients that are not available loc
 
 ### Prerequisites
 
-- JDK 8
-- MySQL 5.x running locally
+- JDK 21
+- MySQL 8.x running locally
 
 ### Database Setup
 
@@ -65,7 +65,13 @@ The application starts on <http://localhost:8080>.
 ./mvnw -B package
 ```
 
-This produces a deployable WAR under `target/`.
+This runs the test suite (against an in-memory H2 database, no MySQL needed) and produces a deployable WAR under `target/`.
+
+### Test
+
+```bash
+./mvnw -B test
+```
 
 ## Project Structure
 
@@ -85,7 +91,7 @@ src/main/resources/
 
 ## Continuous Integration
 
-Every push and pull request is built with Maven on JDK 8 via [GitHub Actions](.github/workflows/ci.yml).
+Every push and pull request is built and tested with Maven on JDK 21 via [GitHub Actions](.github/workflows/ci.yml).
 
 ## License
 
