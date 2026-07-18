@@ -1,11 +1,11 @@
 package com.chrisluttazi.holidaysrecipes.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class UserId {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)

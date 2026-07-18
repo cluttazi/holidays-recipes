@@ -1,6 +1,6 @@
 package com.chrisluttazi.holidaysrecipes.webcontrollers.error;
 
-import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +14,4 @@ public class IndexController implements ErrorController {
         return "Error handling";
     }
 
-    public String getErrorPath() {
-        return PATH;
-    }
 }

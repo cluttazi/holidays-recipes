@@ -1,8 +1,8 @@
 package com.chrisluttazi.holidaysrecipes.model;
 
-import org.hibernate.validator.constraints.Email;
+import jakarta.validation.constraints.Email;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -2,13 +2,13 @@ package com.chrisluttazi.holidaysrecipes.model.persistance.dao;
 
 import com.chrisluttazi.holidaysrecipes.model.CheffBook;
 import com.chrisluttazi.holidaysrecipes.model.Recipe;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public interface RecipeDAO extends PagingAndSortingRepository<Recipe, Long> {
+public interface RecipeDAO extends JpaRepository<Recipe, Long> {
     @SuppressWarnings("unchecked")
     public Recipe save(Recipe recipe);
 

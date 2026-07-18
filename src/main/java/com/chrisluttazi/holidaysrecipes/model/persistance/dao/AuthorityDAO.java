@@ -2,13 +2,13 @@ package com.chrisluttazi.holidaysrecipes.model.persistance.dao;
 
 import com.chrisluttazi.holidaysrecipes.model.Authority;
 import com.chrisluttazi.holidaysrecipes.model.User;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public interface AuthorityDAO extends PagingAndSortingRepository<Authority, Long> {
+public interface AuthorityDAO extends JpaRepository<Authority, Integer> {
 
     @SuppressWarnings("unchecked")
     public Authority save(Authority user);
@@ -18,7 +18,5 @@ public interface AuthorityDAO extends PagingAndSortingRepository<Authority, Long
     public long count();
 
     public List<Authority> findAll();
-
-    public void delete(Long id);
 
 }
